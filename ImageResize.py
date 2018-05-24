@@ -1,21 +1,21 @@
 from skimage import data, io, filters
-from skimage.transform import resize
 
-url = 'paisagem.jpg'
-boxl = 2
+def getPixelColor(img, x, y):
+    '''
+        usar threading;
+        conferir OutOfRange;
+        calcular cor;
+        retornar cor;
+    '''
+    return (0,0,0) #(R,G,B)
 
-image = io.imread(url)
 
+image = data.chelsea()
 width, heigth, s = image.shape
-
-def getPixel(img, x, y):
-    pixelColor = img[x,y]
-    return pixelColor
 
 for i in range(0, width):
     for j in range(0, heigth):
-        if i >= 0 and j >= 0 and i <= width and j <= heigth:
-            image[i,j] = getPixel(image, i, j)
+        image[i,j] = getPixelColor(image, i, j)
 
-io.imshow_collection((io.imread(url),image))
+io.imshow_collection((data.chelsea(),image))
 io.show()
